@@ -1,0 +1,201 @@
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+// const FeaturesGrid = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   width: 100%;
+//   @media (max-width: 991px) {
+//     max-width: 100%;
+//   }
+// `;
+
+// const FeaturesRow = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   gap: 20px;
+//   @media (max-width: 991px) {
+//     flex-direction: column;
+//     align-items: stretch;
+//     gap: 0;
+//   }
+// `;
+const FeaturesRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
+const FeatureColumn = styled.div`
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px;
+  min-width: 200px;
+`;
+// const FeatureColumn = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   line-height: normal;
+//   width: 50%;
+//   @media (max-width: 991px) {
+//     width: 100%;
+//   }
+// `;
+
+const FeatureHighlightWrapper = styled.div`
+  flex: 1;
+  padding: 10px;
+  margin: 20px;
+  min-width: 200px;
+
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 207, 241, 0.1) 0%,
+    rgba(35, 77, 182, 0.1) 100%
+  );
+  box-shadow: 6px 10px 17px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 82.9px 0px rgba(50, 26, 64, 0.4);
+  color: #fff;
+  padding: 20px;
+`;
+const FeatureHighlightWrapper2 = styled.div`
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 207, 241, 0.1) 0%,
+    rgba(35, 77, 182, 0.1) 100%
+  );
+  box-shadow: 6px 10px 17px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 82.9px 0px rgba(50, 26, 64, 0.4);
+  display: flex;
+
+  flex-direction: column;
+  color: #fff;
+  width: 80%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+`;
+
+const FeatureTitle = styled.h2`
+  margin-top: 4px;
+  font: 1000 36px/100% Gilroy, sans-serif;
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+`;
+
+const FeatureDescription = styled.p`
+  margin-top: 26px;
+  font: 500 20px/150% Gilroy, sans-serif;
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+`;
+
+interface FeatureHighlightProps {
+  title: string;
+  description: string;
+}
+
+const featureHighlights = [
+  {
+    title: "Feature Highlights:",
+    description:
+      "From cryptocurrency and vouchers to high-end luxury items, our selection is vast and enticing.",
+  },
+  {
+    title: "Anonymity:",
+    description:
+      "Jump straight into action by connecting your wallet—no registration required.",
+  },
+  {
+    title: "Security:",
+    description:
+      "Experience unmatched transparency with the Solana Blockchain.",
+  },
+  {
+    title: "Fairness First:",
+    description:
+      "We leverage ChainLink VRF technology to ensure absolute fairness in randomness.",
+  },
+];
+
+const FeatureHighlight: React.FC<FeatureHighlightProps> = ({
+  title,
+  description,
+}) => (
+  <FeatureHighlightWrapper>
+    <FeatureTitle>{title}</FeatureTitle>
+    <FeatureDescription>{description}</FeatureDescription>
+  </FeatureHighlightWrapper>
+);
+
+const Features = () => {
+  return (
+    <Container>
+      <FeaturesRow>
+        {featureHighlights.slice(0, 2).map((highlight, index) => (
+          <FeatureHighlight
+            title={highlight.title}
+            description={highlight.description}
+          />
+        ))}
+      </FeaturesRow>
+      <FeaturesRow>
+        {featureHighlights.slice(2).map((highlight, index) => (
+          <FeatureHighlight
+            title={highlight.title}
+            description={highlight.description}
+          />
+        ))}
+      </FeaturesRow>
+    </Container>
+  );
+};
+
+/*
+const Features = () => {
+  return (
+    <Container>
+      <FeaturesGrid>
+        <FeaturesRow>
+          {featureHighlights.slice(0, 2).map((highlight, index) => (
+            <FeatureColumn key={index}>
+              <FeatureHighlight
+                title={highlight.title}
+                description={highlight.description}
+              />
+            </FeatureColumn>
+          ))}
+        </FeaturesRow>
+        <FeaturesRow>
+          {featureHighlights.slice(2).map((highlight, index) => (
+            <FeatureColumn key={index}>
+              <FeatureHighlight
+                title={highlight.title}
+                description={highlight.description}
+              />
+            </FeatureColumn>
+          ))}
+        </FeaturesRow>
+      </FeaturesGrid>
+    </Container>
+  );
+};
+*/
+
+export default Features;

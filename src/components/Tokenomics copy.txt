@@ -1,0 +1,116 @@
+import styled from "styled-components";
+
+const TokenomicsSection = styled.section`
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  @media (max-width: 991px) {
+    width: 90%;
+  }
+`;
+
+const TokenomicsTitle = styled.h2`
+  color: #fff;
+  align-self: center;
+  font: 700 96px/104% Gilroy-Bold, sans-serif;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    font-size: 40px;
+  }
+`;
+
+const TokenomicsCardsContainer = styled.div`
+  margin-top: 99px;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+`;
+
+const TokenomicsCardWrapper = styled.div`
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 207, 241, 0.1) 0%,
+    rgba(35, 77, 182, 0.1) 100%
+  );
+  box-shadow: 6px 10px 17px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 82.9px 0px rgba(50, 26, 64, 0.4);
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  color: #fff;
+  line-height: 100%;
+  width: 33%;
+  padding: 100px;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-bottom: 25px;
+    padding: 20px 0px;
+    width: 100%;
+  }
+`;
+
+const TokenomicsCardValue = styled.div`
+  font: 1000 96px Gilroy-Bold, sans-serif;
+  align-self: center;
+
+  @media (max-width: 991px) {
+    font-size: 40px;
+    margin: 40px 10px 0;
+  }
+`;
+
+const TokenomicsCardTitle = styled.div`
+  margin-top: 10px;
+  font: 600 32px Gilroy-Light, sans-serif;
+  align-self: center;
+
+  @media (max-width: 991px) {
+  }
+`;
+
+const tokenomicsData = [
+  { title: "Tokens", value: "100M" },
+  { title: "Taxes", value: "0/0" },
+  { title: "Liquidity Burnt", value: "100M" },
+];
+
+interface TokenomicsCardProps {
+  title: string;
+  value: string;
+}
+
+const TokenomicsCard: React.FC<TokenomicsCardProps> = ({ title, value }) => {
+  return (
+    <TokenomicsCardWrapper>
+      <TokenomicsCardValue>{value}</TokenomicsCardValue>
+      <TokenomicsCardTitle>{title}</TokenomicsCardTitle>
+    </TokenomicsCardWrapper>
+  );
+};
+
+const Tokenomics = () => {
+  return (
+    <TokenomicsSection>
+      <TokenomicsTitle>TOKENOMICS</TokenomicsTitle>
+      <TokenomicsCardsContainer>
+        {tokenomicsData.map((item, index) => (
+          <TokenomicsCard key={index} title={item.title} value={item.value} />
+        ))}
+      </TokenomicsCardsContainer>
+    </TokenomicsSection>
+  );
+};
+
+export default Tokenomics;

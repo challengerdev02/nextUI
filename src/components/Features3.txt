@@ -1,0 +1,155 @@
+import styled from "styled-components";
+
+const FeaturesSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  @media (max-width: 991px) {
+    width: 90%;
+  }
+`;
+
+const FeaturesTitle = styled.h2`
+  color: #fff;
+  align-self: center;
+  font: 700 96px/104% Gilroy-Bold, sans-serif;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    font-size: 40px;
+  }
+`;
+
+const FeaturesSubTitle = styled.h2`
+  color: #fff;
+  align-self: center;
+  font: 500 24px/36px Gilroy-Light, sans-serif;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    font-size: 40px;
+  }
+`;
+
+const FeaturesCardsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+`;
+
+const FeaturesCardWrapper = styled.div`
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 207, 241, 0.1) 0%,
+    rgba(35, 77, 182, 0.1) 100%
+  );
+  box-shadow: 6px 10px 17px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 82.9px 0px rgba(50, 26, 64, 0.4);
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  color: #fff;
+  line-height: 100%;
+  width: 33%;
+  padding: 20px;
+  text-align: center;
+
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    margin-bottom: 25px;
+    padding: 20px 0px;
+    width: 100%;
+  }
+`;
+
+const FeaturesCardValue = styled.div`
+  font: 500 20px/1 Gilroy-Light, sans-serif;
+
+  @media (max-width: 991px) {
+    font-size: 40px;
+    margin: 40px 10px 0;
+  }
+`;
+
+const FeaturesCardTitle = styled.div`
+  margin-top: 10px;
+  font: 600 32px Gilroy-Light, sans-serif;
+  margin-bottom: 20px;
+
+  @media (max-width: 991px) {
+  }
+`;
+
+const tokenomicsData = [
+  {
+    title: "Anonymity",
+    value: "No need to register, just connect your wallet and play",
+    logo: "https://i.postimg.cc/zHz0ZmDF/1.png",
+  },
+  {
+    title: "Security",
+    value: "Ultimate transparency from the Avalanche Blockchain",
+    logo: "https://i.postimg.cc/6TcMVQzj/2.png",
+  },
+  {
+    title: "True Random",
+    value: "Utilising ChainLink VRF service for ultimate fairness",
+    logo: "https://i.postimg.cc/DmnCbGQ4/3.png",
+  },
+];
+
+const FeaturesCardLogo = styled.img`
+  scale: 0.3;
+`;
+
+interface FeaturesCardProps {
+  title: string;
+  value: string;
+  logo: string;
+}
+
+const FeaturesCard: React.FC<FeaturesCardProps> = ({ title, value, logo }) => {
+  return (
+    <FeaturesCardWrapper>
+      <FeaturesCardLogo alt="logo" src={logo}></FeaturesCardLogo>
+      <FeaturesCardTitle>{title}</FeaturesCardTitle>
+      <FeaturesCardValue>{value}</FeaturesCardValue>
+    </FeaturesCardWrapper>
+  );
+};
+
+const Features = () => {
+  return (
+    <FeaturesSection>
+      <FeaturesTitle>OUR FEATURES</FeaturesTitle>
+      <FeaturesSubTitle>
+        We always have a wide varity of prizes including crypto, vouchers and
+        luxury goods.
+      </FeaturesSubTitle>
+      <FeaturesCardsContainer>
+        {tokenomicsData.map((item, index) => (
+          <FeaturesCard
+            key={index}
+            logo={item.logo}
+            title={item.title}
+            value={item.value}
+          />
+        ))}
+      </FeaturesCardsContainer>
+    </FeaturesSection>
+  );
+};
+
+export default Features;
